@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
+    autoprefixer = require('gulp-autoprefixer'),
     gls = require('gulp-live-server');
 
 
@@ -15,6 +16,9 @@ var gulp = require('gulp'),
 gulp.task('sass', function() {
   return gulp.src('src/scss/main.scss')
     .pipe(sass())
+    .pipe(autoprefixer({
+        browsers: ['> 2%']
+    }))
     .pipe(gulp.dest('build/css'));
 });
 
@@ -31,7 +35,7 @@ gulp.task('scripts', function() {
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('build/js'));
 });
 
@@ -70,7 +74,7 @@ gulp.task('serve', function() {
 
 
 // Default task
-gulp.task('dev', ['html', 'scripts', 'sass', 'watch', 'serve']);
+gulp.task('dev', ['html', 'scripts', 'sass', 'images', 'watch', 'serve']);
 
 // Build task
 gulp.task('build', ['sass', 'html', 'scripts', 'styles', 'images']);

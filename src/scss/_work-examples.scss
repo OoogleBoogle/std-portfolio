@@ -1,0 +1,38 @@
+.work-examples {
+  color: darken(#98a8a8, 15%);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.94em;
+  margin: 0 auto;
+  max-width: 652px;
+  letter-spacing: 0.04em;
+  line-height: 1.47em;
+  // overflow: hidden;
+}
+
+.example {
+  background-color: #ecf5d0;
+  border: 2px solid $aquaish;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center;
+  transition: width .5s linear .5s;
+  width: 4%;
+
+  img {
+    border: 2px solid darken($aquaish, 30%);
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  img, p {
+    opacity: 0;
+  }
+}
+
+.bumper {
+  border: 1px solid $aquaish;
+  margin: 0 auto;
+  padding: 2em 0;
+  width: 0.9px;
+}

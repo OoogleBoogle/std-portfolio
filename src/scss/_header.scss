@@ -1,0 +1,83 @@
+body {
+	width: 100vw;
+}
+
+header {
+	background-color: $pale-yellow;
+	color: $aquaish;
+	font-family: 'Sacramento', cursive;
+	height: 100vh;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.header-wrapper {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -55%);
+	width: 100%;
+}
+
+.main-text-wrapper {
+	margin: 0 auto;
+	max-width: 458px;
+
+	h1 {
+		font-size: 4em;
+		margin: 0;
+		margin-left: 0.5em;
+		opacity: 0;
+
+		@media screen and (max-width: 60em) {
+			font-size: 4.4em;
+		}
+	}
+
+	h3 {
+		font-size: 3.2em;
+		margin-bottom: 0;
+		margin-right: .5em;
+		margin-top: -0.3em;
+		max-width: 558px;
+		opacity: 0;
+		text-align: right;
+
+		@media screen and (min-width: 60em) {
+			font-size: 3.9em;
+		}
+	}
+}
+
+.sub-text-wrapper {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.2em;
+	margin: 0 auto;
+	max-width: 654px;
+	padding: 0 0.8em;
+	text-align: center;
+
+	@media screen and (min-width: 60em) {
+		font-size: 1.3em;
+		letter-spacing: 0.02em;
+	}
+
+	p {
+		opacity: 0;
+	}
+}
+
+.pointer {
+	animation: pointer 0.5s linear 3.5s forwards;
+	border: 1px solid $aquaish;
+	margin: 0 auto;
+	opacity: 0;
+	width: 0.8px;
+}
+
+@keyframes pointer {
+	0% { opacity: 0; height: 0 }
+	2% { opacity: 0.5 }
+	100% { height: 300px; opacity: 1 }
+}
