@@ -64,32 +64,46 @@ function pointerPos() {
 
 function scrollCheck(examples, view) {
 
-
-    if (!view.get(1) && window.scrollY >= (examples[0].offsetTop - examples[0].offsetHeight / 2 )) {
+    if (!view.get(1) && window.scrollY >= 50) {
         view.set(1);
-        examples[0].style.width = "100%";
+        // examples[0].style.width = "100%";
+        Velocity(
+            examples[0],
+            { width: [["100%", "4%"], [250, 15]], height: "100%" },
+            { duration: 500 }
+        );
         Velocity(
             examples[0].children, 
             "fadeIn", 
-            { duration: 1000, delay: 1000 }
+            { duration: 1000, delay: 300 }
         );
     }
-    if (!view.get(2) && window.scrollY > (examples[1].offsetTop - examples[1].offsetHeight)) {
+    if (!view.get(2) && window.scrollY > (examples[1].offsetTop / 2)) {
         view.set(2);
-        examples[1].style.width = "100%";
+        // examples[1].style.width = "100%";
+        Velocity(
+            examples[1],
+            { width: [["100%", "4%"], [250, 15]], height: "100%" },
+            { duration: 500 }
+        );
         Velocity(
             examples[1].children, 
             "fadeIn", 
-            { duration: 1000, delay: 1000 }
+            { duration: 1000, delay: 300 }
         );
     }
-    if (!view.get(3) && window.scrollY > (examples[2].offsetTop - examples[2].offsetHeight)) {
+    if (!view.get(3) && window.scrollY > (examples[2].offsetTop / 2)) {
         view.set(3);
-        examples[2].style.width = "100%";
+        // examples[2].style.width = "100%";
+        Velocity(
+            examples[2],
+            { width: [["100%", "4%"], [250, 15]], height: "100%" },
+            { duration: 500 }
+        );
         Velocity(
             examples[2].children, 
             "fadeIn", 
-            { duration: 1000, delay: 1000 }
+            { duration: 1000, delay: 300 }
         );
     }
 }
