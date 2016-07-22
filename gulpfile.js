@@ -15,15 +15,29 @@ var gulp = require('gulp'),
 // Compile Sass task
 gulp.task('sass', function() {
   return gulp.src('src/scss/main.scss')
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
         browsers: ['> 2%']
     }))
     .pipe(gulp.dest('build/css'));
 });
 
-// Minify index
+gulp.task('sass:prod', function() {
+  return gulp.src('src/scss/main.scss')
+    .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(autoprefixer({
+        browsers: ['> 2%']
+    }))
+    .pipe(gulp.dest('build/css'));
+})
+
 gulp.task('html', function() {
+  return gulp.src('src/index.html')
+    .pipe(gulp.dest('build/'));
+});
+
+// Minify index
+gulp.task('html:prod', function() {
   return gulp.src('src/index.html')
     .pipe(minifyHTML())
     .pipe(gulp.dest('build/'));
@@ -35,15 +49,16 @@ gulp.task('scripts', function() {
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    // .pipe(uglify())
     .pipe(gulp.dest('build/js'));
 });
 
-// Styles build task, concatenates all the files
-gulp.task('styles', function() {
-  return gulp.src('src/css/*.css')
-    .pipe(concat('styles.css'))
-    .pipe(gulp.dest('build/css'));
+gulp.task('scripts:prod', function() {
+  return browserify('src/js/main.js')
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest('build/js'));
 });
 
 // Image optimization task
@@ -77,4 +92,4 @@ gulp.task('serve', function() {
 gulp.task('dev', ['html', 'scripts', 'sass', 'images', 'watch', 'serve']);
 
 // Build task
-gulp.task('build', ['sass', 'html', 'scripts', 'styles', 'images']);
+gulp.task('build', ['sass:prod', 'html:prod', 'scripts:prod', 'images']);
